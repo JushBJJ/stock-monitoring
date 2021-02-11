@@ -1,0 +1,16 @@
+{
+	"WebhookURL": "https://example.com/url",
+	"Method": "POST",
+	"StockWatchlist": ["APPL", "MSFT", "FB"],
+	"ChangePercentage": 10,
+	"Body": {
+		"Stocks": {
+			"stock_drop_message": "The stock, $STOCK has fallen $FALL_PERCENTAGE% in price, currently at $PRICE",
+			"stock_rise_message": "The stock, $STOCK rose $RISE_PERCENTAGE% in price, currently at $PRICE"
+		},
+		"Indices": {
+			"indice_drop_message": "The index, $INDEX has fallen $FAll_percentage% in price, currently sitting at $PRICE",
+			"indice_rise_message": "The index, $INDEX rose $RISE_PERCENTAGE% in price, currently sitting at $PRICE"
+		}
+	}
+}
