@@ -1,3 +1,8 @@
-from chart import Chart
+from session import MonitorSession
+import time
 
-Chart.load_chart("BB")
+s = MonitorSession("BTC")
+s.wait_until_ready()
+while True:
+    print("Current bitcoin price: " + str(s.price))
+    time.sleep(1)
