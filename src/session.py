@@ -14,10 +14,15 @@ class MonitorSession:
         else:
             self.symbol_type = "stock"
         self.price = -1
+        self.is_running = True
         self._thread = threading.Thread(target=self.__create_session)
         self._thread.start()
         while self.price == -1:
             pass
+
+    def shutdown(self):
+        self.is_running = False
+        self.connection.close()
 
     def __create_session(self):
         def on_message(ws, message):
@@ -51,4 +56,9 @@ class MonitorSession:
                                 on_error = on_error,
                                 on_close = on_close,
                                 on_open = on_open)
-        ws.run_forever()
+        self.connection = ws
+        while self.is_running:
+            try:
+                ws.run_forever()
+            except:
+                pass
