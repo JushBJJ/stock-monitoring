@@ -1,8 +1,13 @@
-from session import MonitorSession
+from session import MonitorSession, SessionError
 import time
 
-s = MonitorSession("BTC")
-s.wait_until_ready()
+API_KEY = "c0jsoj748v6qqehfm3qg"
+
+try:
+    s = MonitorSession(symbol="BTC", api_key=API_KEY, symbol_type="crypto")
+except SessionError:
+    print("exit/")
+
 while True:
     print("Current bitcoin price: " + str(s.price))
     time.sleep(1)
