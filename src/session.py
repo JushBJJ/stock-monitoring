@@ -2,8 +2,10 @@ import websocket
 import threading
 import json
 
+
 class SessionError(BaseException):
     pass
+
 
 class MonitorSession:
     def __init__(self, **kwargs):
@@ -52,10 +54,10 @@ class MonitorSession:
 
         websocket.enableTrace(False)
         ws = websocket.WebSocketApp(f"wss://ws.finnhub.io?token={self.api_key}",
-                                on_message = on_message,
-                                on_error = on_error,
-                                on_close = on_close,
-                                on_open = on_open)
+                                    on_message=on_message,
+                                    on_error=on_error,
+                                    on_close=on_close,
+                                    on_open=on_open)
         self.connection = ws
         while self.is_running:
             try:
