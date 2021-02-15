@@ -9,5 +9,10 @@ except SessionError:
     print("exit/")
 
 while True:
-    print("Current bitcoin price: " + str(s.price))
-    time.sleep(1)
+    try:
+        print("Current bitcoin price: " + str(s.price))
+        time.sleep(1)
+    except KeyboardInterrupt:
+        print("Shutting down session.")
+        s.shutdown()
+        break
